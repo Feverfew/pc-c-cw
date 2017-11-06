@@ -21,8 +21,8 @@ int main(int argc, char *argv[])
     if (argc == 2) {
         FILE *gnuplot_data;
         gnuplot_data = fopen("data.dat", "w+");
-        int data_value;
         double prev_coords[2] = {0};
+        int data_val;
         char buffer[BUF_MAX];
         int fd = -1;
         fd = serialport_init(argv[1], BAUDRATE);
@@ -35,10 +35,10 @@ int main(int argc, char *argv[])
         while(prev_coords[0] <= 2*M_PI) {
             memset(buffer, 0, BUF_MAX);
             serialport_read_until(fd, buffer, EOLCHAR, BUF_MAX, TIMEOUT);
-            int data_val = strtol(buffer, NULL, 10);
-            calc_coords(0.1, prev_coords, data_val);
+            data_val = strtol(buffer, NULL, 10);
+            calc_coords(0.005, prev_coords, data_val);
             fprintf(gnuplot_data, "%lf %lf\n", prev_coords[0], prev_coords[1]);
-            fflush(stdout);
+            fflush(gnuplot_data);
         }
         fclose(gnuplot_data);
     } else {
