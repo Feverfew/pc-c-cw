@@ -1,6 +1,8 @@
 #ifndef GRAPHING_H
 #define GRAPHING_H value
 
-int* calc_coords(int r, int prev_coords[], int data_val);
+void calc_coords(double r, double prev_coords[], int data_val);
+
+double map(double x, double in_min, double in_max, double out_min, double out_max);
 
 #endif /* ifndef GRAPHING_H */

@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdio.h>
 
 /*! \brief Maps a number from one range to another
  *
@@ -23,12 +24,10 @@ double map(double x, double in_min, double in_max, double out_min, double out_ma
  * \param r Modulus
  * \param prev_coords Coordinates in the form {x, y} of the previous plot.
  * \param data_val Analog value given by the potentiometer.
- * \return new_coords Pointer to array with the new coordinates.
  */
-int* calc_coords(int r, int prev_coords[], int data_val)
+void calc_coords(double r, double prev_coords[], int data_val)
 {
-    int arg = map((double) data_val, 0, 1023, (double) -M_PI/2, (double) M_PI/2);
+    double arg = map((double) data_val, 0, 1023, (double) -M_PI/2, (double) M_PI/2);
     prev_coords[0] += r*cos(arg);
     prev_coords[1] += r*sin(arg);
-    return prev_coords;
 }
