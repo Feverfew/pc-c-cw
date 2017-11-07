@@ -8,8 +8,8 @@
 
 int main(int argc, char *argv[])
 {
-    if (argc == 2) {
-        generate_plot_script("cos(x)"); 
+    if (argc == 3) {
+        generate_plot_script(argv[2]); 
         generate_points(argv[1]);
     } else {
         error("Please enter port to Arduino");

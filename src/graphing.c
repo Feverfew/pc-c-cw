@@ -75,7 +75,7 @@ int generate_points(char* port_loc)
         memset(buffer, 0, buf_max);
         serialport_read_until(fd, buffer, eolchar, buf_max, timeout);
         data_val = strtol(buffer, NULL, 10);
-        printf("%d\n", data_val);
+        /* printf("%d\n", data_val); */
         calc_coords(0.005, prev_coords, data_val);
         fprintf(gnuplot_data, "%lf %lf\n", prev_coords[0], prev_coords[1]);
         fflush(gnuplot_data);
