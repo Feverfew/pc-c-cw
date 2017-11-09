@@ -1,11 +1,12 @@
-CFLAGS = -Wextra -Wall
+CFLAGS = -Wextra -Wall -g
 CC = gcc
+EXEC = program
 
 all: main.o graphing.o arduino-serial-lib.o
-	$(CC) $(CFLAGS) $? -o program -lm
+	$(CC) $(CFLAGS) $? -o $(EXEC) -lm
 
 clean: 
-	rm *.o ./program data.dat liveplot.gnu
+	rm *.o ./$(EXEC) data.dat liveplot.gnu
 
 main.o: main.c graphing.h
 	$(CC) $(CFLAGS) -c main.c 
