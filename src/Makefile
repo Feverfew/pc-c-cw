@@ -6,7 +6,7 @@ all: main.o graphing.o arduino-serial-lib.o
 	$(CC) $(CFLAGS) $? -o $(EXEC) -lm
 
 clean: 
-	rm *.o ./$(EXEC) data.dat liveplot.gnu
+	rm *.o ./$(EXEC)
 
 main.o: main.c graphing.h
 	$(CC) $(CFLAGS) -c main.c 
